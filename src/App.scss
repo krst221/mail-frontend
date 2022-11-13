@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  text-decoration: none;
+  background-color: lavender;
+  min-height: 100vh;
+}
+
+* {
+  text-decoration: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .App-logo {
@@ -10,6 +18,25 @@
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.c-header {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(35, 31, 97);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  z-index: 99;  
+  nav {
+    padding: 10px;
+
+    a {
+      margin: 20px;
+      color: white;
+      font-weight: 700;
+    }
   }
 }
 

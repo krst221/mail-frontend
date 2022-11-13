@@ -1,0 +1,29 @@
+.c-mail {
+    border-radius: 20px;
+    border: solid 5px black;
+    margin: 10px;
+    background-color: rgb(128, 240, 162);
+    padding: 10px;
+
+    &--title {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+
+        h3 {
+            white-space: nowrap;
+            overflow: hidden;
+            text-align: left;
+            text-overflow: ellipsis;
+        }
+    }
+
+    &--text {
+        overflow-wrap: break-word;
+        text-align: left;
+    }
+}
+
+button {
+    cursor: pointer;
+}

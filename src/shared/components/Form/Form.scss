@@ -1,0 +1,31 @@
+
+
+.c-select {
+    margin: 20px;
+    width: 400px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    margin: 20px auto;
+    align-items: center;
+}
+
+textarea {
+    width: 600px;
+    height: 200px;
+    resize: none;
+}
+
+input[type=text] {
+    margin: 10px;
+    height: 20px;
+    width: 600px;
+}
+
+button {
+    margin: 20px;
+}
