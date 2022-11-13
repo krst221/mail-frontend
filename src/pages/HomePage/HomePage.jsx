@@ -1,11 +1,13 @@
 import React, { useContext} from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { JwtContext} from '../../shared/contexts/JwTContext';
 import { API } from '../../shared/services/api';
 import './HomePage.scss';
 
 function HomePage() {
 
+  let navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const { setJwt } = useContext(JwtContext);
 
@@ -16,6 +18,7 @@ function HomePage() {
           localStorage.setItem('user', JSON.stringify(res.data.user));
           localStorage.setItem('inbox', JSON.stringify(res.data.user.inbox));
           localStorage.setItem('outbox', JSON.stringify(res.data.user.outbox));
+          navigate('/profile');
         });
     }
 

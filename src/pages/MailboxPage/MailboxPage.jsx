@@ -2,7 +2,10 @@
 import { useState } from 'react';
 import List from "../../shared/components/List/List";
 import './MailboxPage.scss'
-import { InboxContext, OutboxContext, ProfileContext } from '../../App'
+import { ProfileContext } from '../../shared/contexts/ProfileContext'
+import { InboxContext } from '../../shared/contexts/InboxContext'
+import { OutboxContext } from '../../shared/contexts/OutboxContext'
+import { ToggleContext } from '../../shared/contexts/ToggleContext'
 
 function MailboxPage() {
 
@@ -12,11 +15,15 @@ function MailboxPage() {
 
   const [outbox, setOutbox] = useState(JSON.parse(localStorage.getItem('outbox')));
 
+  const [toggle, setToggle] = useState(0);
+
   return (
     <ProfileContext.Provider value={{user, setUser}}>
       <InboxContext.Provider value={{inbox, setInbox}}>
         <OutboxContext.Provider value={{outbox, setOutbox}}>
-          <List></List>
+          <ToggleContext.Provider value={{toggle, setToggle}}>
+            <List></List>
+          </ToggleContext.Provider>
         </OutboxContext.Provider>
       </InboxContext.Provider>
     </ProfileContext.Provider>

@@ -9,10 +9,6 @@ import { JwtContext } from './shared/contexts/JwTContext';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import RequireAuth from './shared/components/RequireAuth/RequireAuth';
 
-export const ProfileContext = React.createContext();
-export const InboxContext = React.createContext();
-export const OutboxContext = React.createContext();
-
 function App() {
 
   const [jwt, setJwt] = useState(localStorage.getItem('token') || null);
@@ -23,14 +19,17 @@ function App() {
         <div className="App">
           <header className='c-header'>
             <nav>
-              <Link to='/'>Home</Link>
+              {!jwt && <NavLink  to='/'>Login</NavLink>}
+              {jwt && <NavLink to='/profile'>Profile</NavLink>}
               {jwt && <NavLink to='/mailbox'>Mailbox</NavLink>}
               {!jwt && <NavLink  to='/register'>Register</NavLink>}
             </nav>
           </header>
           <main>
+          <h1>C-MAIL</h1>
             <Routes>
-              <Route path='/' element={jwt ? <ProfilePage /> : <HomePage/>} />
+              <Route path='/' element={<HomePage/>} />
+              <Route path='/profile' element={<RequireAuth><ProfilePage /></RequireAuth>} />
               <Route path='/mailbox' element={<RequireAuth><MailboxPage /></RequireAuth>} />
               <Route path='/register' element={<RegisterPage />} />
             </Routes>

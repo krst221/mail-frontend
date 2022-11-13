@@ -8,19 +8,24 @@
     &--title {
         display: flex;
         justify-content: space-between;
-        cursor: pointer;
 
         h3 {
             white-space: nowrap;
             overflow: hidden;
             text-align: left;
             text-overflow: ellipsis;
+            cursor: pointer;
+
+            &:hover {
+                color: darkblue;
+            }
         }
     }
 
     &--text {
         overflow-wrap: break-word;
         text-align: left;
+        margin: 20px 0;
     }
 }
 

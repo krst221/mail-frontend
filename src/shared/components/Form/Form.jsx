@@ -1,13 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useForm } from "react-hook-form";
 import Select from 'react-select';
-import { ProfileContext } from '../../../App';
+import { ProfileContext } from '../../contexts/ProfileContext';
+import { ToggleContext } from '../../contexts/ToggleContext';
 import { API } from '../../services/api'
 import './Form.scss';
 
 function Form() {
 
   const {user} = useContext(ProfileContext);
+
+  const {setToggle} = useContext(ToggleContext);
 
   const [mail, setMail] = useState();
 
@@ -44,6 +47,7 @@ function Form() {
         localStorage.setItem('outbox', JSON.stringify(res.data.outbox));
       });
       reset();
+      setToggle(0);
     }
     else console.log('Select a mail!');
   };
@@ -51,7 +55,7 @@ function Form() {
   return (
     <>
       <h2>Send new mail</h2>
-      <form onSubmit={handleSubmit(mailSubmit)}>
+      <form onSubmit={handleSubmit(mailSubmit)} className='c-mailform'>
         {userList.length > 0 && <Select className='c-select' placeholder={'Select a mail...'}
           options={userList} getOptionLabel={(option) => `${option.name} (${option.email})`}
           getOptionValue={(option) => option.email} onChange={handleChange}/>}

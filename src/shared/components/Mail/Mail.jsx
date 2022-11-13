@@ -7,7 +7,8 @@ function Mail({mail}) {
 
   const [body, setBody] = useState([]);
 
-  const [toggle, setToggle] = useState(false);
+  const [mtoggle, setmToggle] = useState(false);
+  
 
   useEffect(() => {
       const mId = [mail];
@@ -34,11 +35,11 @@ function Mail({mail}) {
     <>
       {body[0] && 
         <div className='c-mail'>
-          <div className='c-mail--title' onClick={() =>setToggle(!toggle)}>
-            <h3>Título: {body[0].title}</h3>
+          <div className='c-mail--title'>
+            <h3 onClick={() =>setmToggle(!mtoggle)}>Título: {body[0].title}</h3>
             <button onClick={() => deleteMail()}>x</button>
           </div>
-          {toggle && 
+          {mtoggle && 
             <>
               <h5>Recibido el: {(new Date(body[0].createdAt).getDay()+6) + '/' + (new Date(body[0].createdAt).getMonth()+1) + '/' + new Date(body[0].createdAt).getUTCFullYear() + ' ' + (new Date(body[0].createdAt).getHours()).toLocaleString('es-ES', {minimumIntegerDigits: 2, useGrouping: false}) + ':' + new Date(body[0].createdAt).getMinutes().toLocaleString('es-ES', {minimumIntegerDigits: 2, useGrouping: false}) + ':' + new Date(body[0].createdAt).getSeconds().toLocaleString('es-ES', {minimumIntegerDigits: 2, useGrouping: false})}</h5>
               <div className='c-mail--text'>

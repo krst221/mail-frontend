@@ -1,18 +1,18 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Navigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { API } from '../../shared/services/api'
 import './RegisterPage.scss'
 
 function RegisterPage() {
-  const location = useLocation();
 
+  let navigate = useNavigate();
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (formData) => {
     API.post('/user/register', formData).then(() => {
       reset();
-      <Navigate to='/' replace state={{ from: location }}/>
+      navigate('/');
     }
     );
   }

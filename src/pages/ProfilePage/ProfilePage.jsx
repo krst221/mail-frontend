@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ProfileContext } from '../../App'
+import { ProfileContext } from '../../shared/contexts/ProfileContext'
 import AuthButton from '../../shared/components/AuthButton/AuthButton'
 import Profile from '../../shared/components/Profile/Profile'
 import './ProfilePage.scss'

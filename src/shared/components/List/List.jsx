@@ -1,5 +1,8 @@
-import React, { useContext, useState, useEffect} from 'react'
-import { InboxContext, OutboxContext, ProfileContext } from '../../../App';
+import React, { useContext, useEffect} from 'react'
+import { ProfileContext } from '../../contexts/ProfileContext';
+import { InboxContext } from '../../contexts/InboxContext';
+import { OutboxContext } from '../../contexts/OutboxContext';
+import { ToggleContext } from '../../contexts/ToggleContext';
 import Loading from '../Loading/Loading';
 import Mail from '../Mail/Mail';
 import { API } from '../../services/api';
@@ -14,7 +17,7 @@ function List() {
 
   const {outbox} = useContext(OutboxContext);
 
-  const [toggle, setToggle] = useState(0);
+  const {toggle, setToggle} = useContext(ToggleContext);
 
   useEffect(() => {
 
