@@ -28,7 +28,7 @@ function App() {
           <main>
           <h1>C-MAIL</h1>
             <Routes>
-              <Route path='/' element={<HomePage/>} />
+              <Route path='/' element={jwt ? <RequireAuth><ProfilePage /></RequireAuth> : <HomePage/>} />
               <Route path='/profile' element={<RequireAuth><ProfilePage /></RequireAuth>} />
               <Route path='/mailbox' element={<RequireAuth><MailboxPage /></RequireAuth>} />
               <Route path='/register' element={<RegisterPage />} />
